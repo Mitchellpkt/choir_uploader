@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Operator Aware: Analysis Results</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demo.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/component.css') }}"/>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <style>
+        .call_is_urgent {
+            background-color: palegoldenrod;
+            /* padding-top: 0; */
+            /* padding-bottom 0; */
+            position: relative; /* This protects the inner element from being blurred */
+            padding: 35px;
+        }
+
+        audio:hover, audio:focus, audio:active {
+            -webkit-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+            -webkit-transform: scale(1.01);
+            -moz-transform: scale(1.01);
+            transform: scale(1.01);
+        }
+
+        audio {
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+            -moz-box-shadow: 2px 2px 4px 0px #006773;
+            -webkit-box-shadow: 2px 2px 4px 0px #006773;
+            box-shadow: 2px 2px 4px 0px #006773;
+            -moz-border-radius: 7px 7px 7px 7px;
+            -webkit-border-radius: 7px 7px 7px 7px;
+            border-radius: 7px 7px 7px 7px;
+        }
+
+        .shadow1 {
+            margin: 40px;
+            background-color: rgb(68, 68, 68); /* Needed for IEs */
+            -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+            -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+            box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+            max-width: 600;
+
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3, MakeShadow=true, ShadowOpacity=0.30);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+            zoom: 1;
+        }
+
+        .shadow1 .content {
+            position: relative; /* This protects the inner element from being blurred */
+            padding: 35px;
+            background-color: #F0F8FF /*#fefefe*/ /* ADJUST CARD COLOR HERE */
+        }
+
+    </style>
+
+    <!-- remove this if you use Modernizr -->
+    <script>(function (e, t, n) {
+        var r = e.querySelectorAll("html")[0];
+        r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
+    })(document, window, 0);</script>
+
+</head>
+<body>
+<div class="container">
+    <header class="codrops-header">
+        <h1>Operator Aware</h1>
+        <h2><br>Mitchell Krawiec-Thayer<br><br><a target="_blank" href="http://github.com/mitchellpkt/OperatorAware">Github </a>
+            &nbsp;&#9830;&nbsp; <a target="_blank" href="https://i.imgur.com/HWgL9C0.png">Algorithm</a> &nbsp;&#9830;&nbsp;
+            <a target="_blank" href="mailto:mitchellpkt@protonmail.com">Contact</a></h2>
+    </header>
+    <div class="content">
+        <div class="box">
+            {% for call in calls %}
+            <div class="shadow1">
+
+                {% if call.is_urgent %}
+                    {% if call.not_naive %}
+                        <!-- URGENT & NOT-NAIVE -->
+                        <div class="call_is_urgent">
+                        <img src="https://i.imgur.com/SWFsspA.png" width="425" height="60"><br><br>
+                    {% else %}
+                        <!-- URGENT & NAIVE -->
+                        <div class="content">
+                    {% endif %}
+                {% else %}
+                    <!-- NON-URGENT -->
+                    <div class="content">
+                {% endif %}
+
+
+                        {% if call.is_not_demo %}
+                        <font size="4">
+                            <!-- Analysis of --> <b><h2>{{ call.base_filename }}:</h2></b>
+
+                            {% endif %}
+
+                            <font size="5"> <b>Duration: {{ call.call_duration}} </b></font><br>{% if call.not_naive %}
+                            <i>{{
+                                call.confidence_warning }}</i>{% endif %}
+
+                            <!--Urgency count: {{ call.is_urgent }}-->
+
+                            {% if call.not_naive %}
+
+
+                            {% if call.is_urgent %}
+
+                            <!-- based on the keywords--> <h2>Keywords detected:<br> <font color="blue">
+                            {{call.words_list}} </font></h2>
+
+                            <!-- The call may contain these situations: --> <h2>Classification: <br><font color="red">
+                            {{call.categories_list}} </font></h2>
+
+
+                            {% else %}
+                            <h1><font color="#006400">No emergency detected</font></h1>
+                            <!--  Listen to call: -->
+                            {% endif %}
+
+                            {% endif %}
+
+                            <br>
+                            <audio controls>
+                                <source src="{{ url_for('static', filename='uploads/' + call.base_filename) }}"
+                                        type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+
+                            {% if call.is_debug %}
+                            <br>
+                            {{ call.net_transcription }}
+                            {% endif %}
+
+                    </font>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+            <br><br><IMG SRC="https://pride.physio/wp-content/uploads/2016/10/operator-865x655.jpg" ALIGN="center"
+                         height="327" width="432"><br>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
