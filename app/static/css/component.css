@@ -52,27 +52,27 @@ e5e6f1
 
 .inputfile-1 + label {
     color: #ffffff;
-    background-color: #d3394c;
+    background-color: #ffffff;
 }
 
 .inputfile-1:focus + label,
 .inputfile-1.has-focus + label,
 .inputfile-1 + label:hover {
-    background-color: #722040;
+    background-color: #ffffff;
 }
 
 
 /* style 2 */
 
 .inputfile-2 + label {
-    color: #d3394c;
+    color: #ffffff;
     border: 2px solid currentColor;
 }
 
 .inputfile-2:focus + label,
 .inputfile-2.has-focus + label,
 .inputfile-2 + label:hover {
-    color: #722040;
+    color: #ffffff;
 }
 
 
