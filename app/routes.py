@@ -142,6 +142,7 @@ def indexpost(confidence_threshold=0.6):
         #    })
 
         if not filename_list:
+	    return('NOPE')
             print("Empty upload, no files received this time!")
             #new_filename_list = os.listdir(os.path.join(APP_ROOT, 'static/demo_files'))
             #print(new_filename_list)
