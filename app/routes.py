@@ -152,4 +152,4 @@ def indexpost(confidence_threshold=0.6):
             print(new_filename_list)
 
         # Return the result
-        return render_template('output.html', calls=call_list)S
+        return render_template('output.html', calls=call_list)
