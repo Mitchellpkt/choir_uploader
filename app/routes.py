@@ -32,7 +32,7 @@ def indexpost(confidence_threshold=0.6):
         filename_str = upload.filename
         print("{} is the filename".format(filename_str))
 
-        destination = "./files/upload_at_"+ str(round(time.time())) # ####### "/".join([target, filename_str])
+        destination = "./files/" filename_str + "." + str(round(time.time())) # ####### "/".join([target, filename_str])
         print("Accepted incoming file: ", filename_str)
 
         upload.save(destination)
