@@ -53,7 +53,7 @@ def indexpost(confidence_threshold=0.6):
         filename_str = upload.filename
         print("{} is the filename".format(filename_str))
 
-        destination = "test"+ str(time.time()) # ####### "/".join([target, filename_str])
+        destination = "./files/upload_at_"+ str(round(time.time())) # ####### "/".join([target, filename_str])
         print("Accepted incoming file: ", filename_str)
 
         upload.save(destination)
@@ -143,9 +143,9 @@ def indexpost(confidence_threshold=0.6):
 
         if not filename_list:
             print("Empty upload, no files received this time!")
-            new_filename_list = os.listdir(os.path.join(APP_ROOT, 'static/demo_files'))
-            print(new_filename_list)
+            #new_filename_list = os.listdir(os.path.join(APP_ROOT, 'static/demo_files'))
+            #print(new_filename_list)
 
         # Return the result
-        return render_template('output.html', calls=0)
+        return render_template('output2.html')
         #return render_template('output.html', calls=call_list)
