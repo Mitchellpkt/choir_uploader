@@ -41,28 +41,28 @@ def indexpost(confidence_threshold=0.6):
 
     #else:
         # Continue ahead
-        net_results_printout = ''  # init
-        call_list = list()
+    net_results_printout = ''  # init
+    call_list = list()
 
-        filename_list = list()
+    filename_list = list()
         # LOOP OVER UPLOADED FILES
-        print(request.files.getlist("file"))
-        for upload in request.files.getlist("file"):
-            print(upload)
+    print(request.files.getlist("file"))
+    for upload in request.files.getlist("file"):
+        print(upload)
 
-            filename_str = upload.filename
-            print("{} is the filename".format(filename_str))
+        filename_str = upload.filename
+        print("{} is the filename".format(filename_str))
 
-            destination = "~" # ####### "/".join([target, filename_str])
-            print("Accepted incoming file: ", filename_str)
+        destination = "~" # ####### "/".join([target, filename_str])
+        print("Accepted incoming file: ", filename_str)
 
-            upload.save(destination)
-            print("Saved it to: ", destination)
+        upload.save(destination)
+        print("Saved it to: ", destination)
 
-            filename_list.append(destination)
+        filename_list.append(destination)
             ######
 
-        is_not_demo = 1
+        # is_not_demo = 1
         # IF NO FILES UPLOADED, USE DEMO
         #if (pswd_from_user=="") or (not filename_list):
         #    is_not_demo = 0
@@ -91,7 +91,7 @@ def indexpost(confidence_threshold=0.6):
         #    filename_list.sort()
         #    print(filename_list)
 
-        for filename in filename_list:
+        # for filename in filename_list:
 
         #    results_printout, audio_length_s, confidence_metric, words_list, categories_list, is_urgent, net_transcription = handler_in_str_to_out_str(
         #        audio_file_name_w_extension=filename,
@@ -142,7 +142,7 @@ def indexpost(confidence_threshold=0.6):
         #    })
 
         if not filename_list:
-            print("EMPTY FILE UPLOAD!!!!!")
+            print("Empty upload, no files received this time!")
             new_filename_list = os.listdir(os.path.join(APP_ROOT, 'static/demo_files'))
             print(new_filename_list)
 
