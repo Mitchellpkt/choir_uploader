@@ -24,7 +24,7 @@ def indexpost(confidence_threshold=0.6):
     call_list = list()
 
     filename_list = list()
-]
+
     print(request.files.getlist("file"))
     for upload in request.files.getlist("file"):
         print(upload)
@@ -40,8 +40,6 @@ def indexpost(confidence_threshold=0.6):
 
         filename_list.append(destination)
             
-
-
     if not filename_list:
         return('NOPE')
         print("Empty upload, no files received this time!")
