@@ -2,13 +2,13 @@ from flask import render_template, request
 from app import app
 #from operator_aware_lib.handler_in_str_to_out_str import handler_in_str_to_out_str
 #from operator_aware_lib.check_passphrase import check_passphrase
-#import time
+import time
 import os
-#import re
+import re
 from shutil import copyfile
 
 
-#APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/pentest')
 def pentest():
