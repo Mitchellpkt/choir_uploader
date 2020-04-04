@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Operator Aware: Home</title>
+    <title>CPC choir uploader: Home</title>
 
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}"/>
@@ -40,14 +40,16 @@
 <body>
 <div class="container">
     <header class="codrops-header">
-        <h1>Operator Aware</h1>
-        <h2><br>Mitchell Krawiec-Thayer<br><br><a target="_blank" href="http://github.com/mitchellpkt/OperatorAware">Github </a> &nbsp;&#9830;&nbsp; <a target="_blank" href="https://i.imgur.com/HWgL9C0.png">Algorithm</a>  &nbsp;&#9830;&nbsp; <a target="_blank" href="mailto:mitchellpkt@protonmail.com">Contact</a></h2>
-        <br><i><font size = "5" face = "Times New Roman">Hint: leave the supervisor passphrase blank for a demo with real 911 calls<br> (upload disabled without authentication)</font></i>
+                <IMG SRC="https://492jvi1i8ymc2oig6z4ctugl-wpengine.netdna-ssl.com/wp-content/uploads/sites/30/2016/08/CPC-logo-2014-color.jpg"><br>
+
+        <h1>CPC virtual choir uploader</h1>
     </header>
+
     <div class="content">
         <div class="box">
             <form id="upload-form" action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
-                <h2> 1) Upload calls for review:</h2>
+<br>
+<br>
                 <input type="file" name="file" id="file" class="inputfile inputfile-4"
                        data-multiple-caption="{count} files selected" multiple/>
 <!--                <input type="file" name="file-5[]" id="file-5" class="inputfile inputfile-4"
@@ -61,10 +63,8 @@
                     <span>Choose your file(s)&hellip;</span></label>
 
                 <br><br>
-                <h2> 2) Enter supervisor passphrase:<br><br>
-                    <input id="password" type="password" name="password" maxlength="60">
-                    <br><br>
-                    <h2> 3) Press to submit:</h2> <input type="submit" value="OperatorAware Analyze" id="upload-button" onclick="myFunction()">
+                
+                    <h2> </h2> <input type="submit" value="Press to upload video" id="upload-button" onclick="myFunction()">
 
 
 
@@ -78,7 +78,6 @@
         </script>
 
             </form>
-                <br><br><IMG SRC="https://pride.physio/wp-content/uploads/2016/10/operator-865x655.jpg" ALIGN="center" height="327" width="432"><br>
         </div>
 
     </div>
